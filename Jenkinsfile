@@ -2,16 +2,16 @@ pipeline {
 
     agent any
     
-    // environment {
-    //     PASS = credentials('registry-pass') 
-    // }
+    environment {
+        PASS = credentials('github-registry-password') 
+    }
 
     stages {
 
         stage('Build') {
             steps {
                 sh '''
-                    ./jenkins/build/mvn.sh mvn -B -DskipTests clean package
+                    ./jenkins/build/mvn.sh mvn -B -DskipTests clean test install package
                     ./jenkins/build/build.sh
 
                 '''
