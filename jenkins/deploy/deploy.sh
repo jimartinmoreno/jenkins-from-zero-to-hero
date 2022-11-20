@@ -4,7 +4,7 @@ echo jenkins-course-maven-project > /tmp/.auth
 echo $BUILD_TAG >> /tmp/.auth
 echo $PASS >> /tmp/.auth
 
-WORKSPACE_PATH = /var/jenkins_home/workspace/pipeline-docker-maven/
+WORKSPACE_PATH=/var/jenkins_home/workspace/pipeline-docker-maven/
 
 echo "*** Path $WORKSPACE_PATH ****"
 
