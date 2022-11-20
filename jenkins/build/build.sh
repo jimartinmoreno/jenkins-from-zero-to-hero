@@ -4,7 +4,7 @@ echo "****************************"
 echo "** Creating the new jar  ***"
 echo "****************************"
 
-./jenkins/build/mvn.sh  mvn -B -DskipTests clean test install package
+./jenkins/build/mvn.sh  mvn -B -DskipTests test install package
 
 echo "****************************"
 echo "** Copy the new jar      ***"
