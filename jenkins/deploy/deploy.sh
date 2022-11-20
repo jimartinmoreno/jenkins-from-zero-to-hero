@@ -6,9 +6,10 @@ echo $PASS >> /tmp/.auth
 
 WORKSPACE_PATH=/var/jenkins_home/workspace/pipeline-docker-maven/
 
-echo "*** Path $WORKSPACE_PATH ****"
+echo "*** WORKSPACE_PATH: $WORKSPACE_PATH ****"
+echo "*** WORKSPACE: $WORKSPACE ****"
 
 docker cp /tmp/.auth centos-remote-host:/tmp/.auth
-docker cp $WORKSPACE_PATH/jenkins/deploy/publish centos-remote-host:/tmp/publish
-docker cp $WORKSPACE_PATH/jenkins/deploy/docker-compose.yml centos-remote-host:/tmp/docker-compose.yml
-docker exec -it centos-remote-host bash /tmp/publish
+docker cp $WORKSPACE/jenkins/deploy/publish centos-remote-host:/tmp/publish
+docker cp $WORKSPACE/jenkins/deploy/docker-compose.yml centos-remote-host:/tmp/docker-compose.yml
+docker exec centos-remote-host bash /tmp/publish
