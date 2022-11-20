@@ -13,11 +13,7 @@ RUN apt-get install -y iputils-ping
 # Install Docker
 
 RUN apt-get update
-RUN apt-get install -y \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+RUN apt-get install -y ca-certificates curl gnupg lsb-release apt-transport-https gnupg2 software-properties-common wget
 RUN mkdir -p /etc/apt/keyrings
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 RUN echo \
@@ -26,9 +22,12 @@ RUN echo \
 RUN apt-get update -y
 RUN apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-# Compose
+# Install ßCompose
 
-RUN curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+RUN curl -s https://api.github.com/repos/docker/compose/releases/latest | grep browser_download_url  | grep docker-compose-linux-x86_64 | cut -d '"' -f 4 | wget -qi -
+
+RUN chmod +x docker-compose-linux-x86_64
+RUN mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 
 RUN apt-get update -y
 RUN apt-get install -y sudo
@@ -39,4 +38,3 @@ RUN sudo usermod -aG docker jenkins
 RUN if [ -e /var/run/docker.sock ]; then sudo chown jenkins:jenkins /var/run/docker.sock; fi
 
 USER jenkins
-
