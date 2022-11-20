@@ -6,7 +6,7 @@
 # echo "** Building jar ***********"
 # echo "***************************"
 
-# WORKSPACE=/Users/jose-ignacio.martin/learning/jenkins/jenkins-data/jenkins_home/workspace/pipeline-docker-maven
+WORKSPACE=/Users/jose-ignacio.martin/learning/jenkins/jenkins-data/jenkins_home/workspace/pipeline-docker-maven
 
 echo "*****************************************************************************"
 echo "**************                    Building jar                    ***********"
