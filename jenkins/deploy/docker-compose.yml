@@ -1,0 +1,6 @@
+# Creates a JDK docker container that runs the JAR file obtained with the build/mvn.sh 
+version: '3'
+services:
+  app:
+    image: "jimartin7/$IMAGE:$TAG"
+    container_name: $IMAGE-container_name
